@@ -1,1 +1,36 @@
-[]
+[
+  3,
+  {
+    "id": 1,
+    "title": "Prod prueba 1",
+    "description": "Producto de prueba",
+    "code": "1234",
+    "price": 200,
+    "status": true,
+    "stock": 8,
+    "category": "prueba",
+    "thumbnails": "Sin imagen"
+  },
+  {
+    "id": 2,
+    "title": "Prod prueba 2",
+    "description": "Producto de prueba",
+    "code": "1234567",
+    "price": 200,
+    "status": true,
+    "stock": 8,
+    "category": "prueba",
+    "thumbnails": "Sin imagen"
+  },
+  {
+    "id": 3,
+    "title": "Prod prueba 3",
+    "description": "Producto de prueba",
+    "code": "123456789",
+    "price": 200,
+    "status": true,
+    "stock": 8,
+    "category": "prueba",
+    "thumbnails": "Sin imagen"
+  }
+]
