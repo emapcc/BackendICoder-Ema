@@ -1,5 +1,6 @@
 import express from 'express';
-import ProductManager from './productManager.js'
+import ProductManager from './productManager.js';
+import CartManager from './cartManager.js';
 
 const app = express();
 const PORT = 8080;
@@ -9,6 +10,9 @@ const server = app.listen(PORT, () => console.log("Escuchando en el puerto ", PO
 app.use(express.json());
 
 const productManager = new ProductManager('products.json');
+const cartManager = new CartManager('carts.json');
+
+//PRODUCTOS 
 
 //Todos los productos
 app.get('/products', async (req, res) => {
@@ -54,3 +58,27 @@ app.delete('/products/:pid', async (req, res) => {
     if (!deleted) return res.status(404).json({ message: 'Producto no encontrado' });
     res.status(204).send();
 });
+
+//CARRITO
+
+app.get('/carts', async (req, res) => {
+    const carts = await cartManager.getCarts();
+    res.json(carts);
+})
+
+app.post('/carts', async (req, res) => {
+    const newCart = await cartManager.addCart();
+    res.status(201).json(newCart);
+})
+
+app.get('/cart/:cid', async (req, res) => {
+    const cart = await cartManager.getCartById(req.params.cid);
+    if(!cart) return res.status(404).json({message: `Carrito con id ${req.params.cid} no encontrado.`});
+    res.json(cart.products);
+})
+
+app.post('/carts/:cid/product/:pid', async (req, res) => {
+    const updatedCart = await cartManager.addProductCart(req.params.cid, req.params.pid);
+    if (!updatedCart) return res.status(404).json({ message: 'Carrito o Producto no encontrado' });
+    res.status(201).json(updatedCart);
+})
