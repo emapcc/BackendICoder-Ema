@@ -71,14 +71,20 @@ app.post('/carts', async (req, res) => {
     res.status(201).json(newCart);
 })
 
-app.get('/cart/:cid', async (req, res) => {
+app.get('/carts/:cid', async (req, res) => {
     const cart = await cartManager.getCartById(req.params.cid);
     if(!cart) return res.status(404).json({message: `Carrito con id ${req.params.cid} no encontrado.`});
     res.json(cart.products);
 })
 
 app.post('/carts/:cid/product/:pid', async (req, res) => {
-    const updatedCart = await cartManager.addProductCart(req.params.cid, req.params.pid);
-    if (!updatedCart) return res.status(404).json({ message: 'Carrito o Producto no encontrado' });
-    res.status(201).json(updatedCart);
+    const product = await productManager.getProductById(req.params.pid);
+    if(product){
+        const updatedCart = await cartManager.addProductCart(req.params.cid, req.params.pid);
+        if (!updatedCart) return res.status(404).json({ message: 'Carrito no encontrado' });
+        res.status(201).json(updatedCart);
+    } else{
+        console.error('Error: Producto no encontrado');
+        return res.status(404).json({ error: 'Producto no encontrado' });
+    }
 })

@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+//import ProductManager from './productManager.js';
 
 class CartManager{
     constructor(nombreArch) {
@@ -39,7 +40,6 @@ class CartManager{
             const idC = Number(idCart);
             const idP = Number(idProd);
 
-            
             const cartIndex = carts.slice(1).findIndex(c => c.id === idC);
             if(cartIndex === -1){
                 console.log(`Carrito con el id ${idC} no encontrado.`);

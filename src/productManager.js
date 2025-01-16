@@ -22,8 +22,9 @@ class ProductManager{
 
     async getProductById(id){
         const products = await this.getProducts();
-        let productBuscado = products.find(p => p.id === id);
-        return productBuscado || 'Producto no encontrado.';
+        let productBuscado = products.find(p => p.id === Number(id));
+        if(productBuscado === undefined) return false;
+        else return productBuscado;
     }
 
     async addProduct(product){
