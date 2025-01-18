@@ -44,10 +44,14 @@ class ProductManager{
                 productsFile.push(newProduct); // Agrega el producto al array estático
                 await fs.writeFile(this.filePath, JSON.stringify(productsFile, null, 2));
                 console.log('Producto creado exitosamente.');
-                //return newProduct;
-            }else if(!(product.title && product.description && product.price && product.status && product.category && product.thumbnails && product.code && product.stock)) return console.log('Error: No estan todos los campos necesarios.');
-            
-            else console.error('Error: Producto con codigo ya existente.');
+                return newProduct;
+            }else if(!(product.title && product.description && product.price && product.status && product.category && product.thumbnails && product.code && product.stock)){
+                console.log('Error: No estan todos los campos necesarios.');
+                return false
+            }else{
+                console.error('Error: Producto con codigo ya existente.');
+                return false
+            }
         }catch(error){
             console.error('Error al crear el producto.');
         }
@@ -56,7 +60,7 @@ class ProductManager{
     async updateProduct(id, actualizaciones){
         //Agregar try catch?
         const products = await this.getProducts();
-        const index = products.findIndex(p => p.id === id);
+        const index = products.findIndex(p => p.id === Number(id));
         if (index === -1) {
             console.log(`Producto con el id ${id} no encontrado.`);
             return null;
@@ -65,7 +69,7 @@ class ProductManager{
         products[index] = {
             ...products[index],
             ...actualizaciones,
-            id, //El id no cambia
+            "id": Number(id), //El id no cambia
         };
 
         //Leer el archivo original por el contador
@@ -81,7 +85,7 @@ class ProductManager{
 
     async deleteProduct(id){
         const products = await this.getProducts();
-        const updatedProducts = products.filter(p => p.id !== id);
+        const updatedProducts = products.filter(p => p.id !== Number(id));
         //Retorna false si no elimino nada (no encontro el id)
         if (products.length === updatedProducts.length){
             console.log(`Producto con id ${id} no encontrado.`);
