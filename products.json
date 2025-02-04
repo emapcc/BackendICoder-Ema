@@ -1,5 +1,5 @@
 [
-  3,
+  4,
   {
     "id": 1,
     "title": "Prod prueba 1",
@@ -31,6 +31,17 @@
     "status": true,
     "stock": 8,
     "category": "prueba",
+    "thumbnails": "Sin imagen"
+  },
+  {
+    "id": 4,
+    "title": "Manzana",
+    "description": "Verde",
+    "code": "0303",
+    "price": 100,
+    "status": true,
+    "stock": 5,
+    "category": "Fruta",
     "thumbnails": "Sin imagen"
   }
 ]

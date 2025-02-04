@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import ProductManager from '../productManager.js';
+import ProductManager from '../fileManager/productManager.js';
 
 const router = Router();
 const productManager = new ProductManager('products.json');
@@ -19,7 +19,9 @@ router.get('/:pid', async (req,res) => {
 
 //Agregar producto
 router.post('/', async (req, res) => {
-    const { title, description, code, price, status = true, stock, category, thumbnails = [] } = req.body;
+    let { title, description, code, price, status = true, stock, category, thumbnails = [] } = req.body;
+    price = Number(price);
+    stock = Number(stock);
     const newProduct = await productManager.addProduct({
         title,
         description,

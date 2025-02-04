@@ -1,0 +1,41 @@
+<div>
+    <h1>Plantilla para trabajar con socket</h1>
+    <form id="form">
+        <label for="title">Titulo:</label>
+        <input type="text" name="title" id="title" required>
+        <br>
+        <label for="description">Descripción:</label>
+        <input type="text" name="description" id="description" required>
+        <br>
+        <label for="code">Código de producto:</label>
+        <input type="text" name="code" id="code" required>
+        <br>
+        <label for="price">Precio:</label>
+        <input type="number" name="price" id="price" required>
+        <br>
+        <label for="stock">Stock del producto:</label>
+        <input type="number" name="stock" id="stock" required>
+        <br>
+        <label for="category">Categoría:</label>
+        <input type="text" name="category" id="category">
+        <br>
+        <button type="submit">Registrar producto</button>
+    </form>
+    <p>Productos con socket:</p>
+    <div>
+        {{#if products}}
+            <ul id="productsContainer">
+                {{#each products}}
+                    <li id="product-{{this.id}}">
+                        {{this.title}} - ${{this.price}}
+                        <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
+                    </li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <p>No hay productos</p>
+        {{/if}}
+    </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>

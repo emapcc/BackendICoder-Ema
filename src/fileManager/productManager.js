@@ -31,7 +31,8 @@ class ProductManager{
         try{      
             const data = await fs.readFile(this.filePath, 'utf-8');
             const productsFile = JSON.parse(data);   
-
+            product.price = Number(product.price);
+            product.stock = Number(product.stock);
             let productCodeRep = productsFile.slice(1).find(p => p.code === product.code)
             if(!productCodeRep && product.title && product.description && product.price && product.status && product.category && product.thumbnails && product.code && product.stock){
                 const id = productsFile[0] + 1;
@@ -45,7 +46,7 @@ class ProductManager{
                 await fs.writeFile(this.filePath, JSON.stringify(productsFile, null, 2));
                 console.log('Producto creado exitosamente.');
                 return newProduct;
-            }else if(!(product.title && product.description && product.price && product.status && product.category && product.thumbnails && product.code && product.stock)){
+            }else if(!(product.title && product.description && product.price && product.category && product.code && product.stock && product.status && product.thumbnails)){
                 console.log('Error: No estan todos los campos necesarios.');
                 return false
             }else{
