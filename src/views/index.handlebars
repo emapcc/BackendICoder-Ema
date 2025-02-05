@@ -1,10 +1,16 @@
 <h1>Productos sin sockets:</h1>
-<ul>
-    {{#if products}}
-        {{#each products}}
-            <li>{{this.title}} - ${{this.price}}</li>
-        {{/each}}
-    {{else}}
-        <p>No hay productos</p>
-    {{/if}}
-</ul>
+<div class="cartsContainer">
+    <ul>
+        {{#if products}}
+            {{#each products}}
+                <li>
+                    <p><u>{{this.title}}</u></p>
+                    <p>Descripción: <br> {{this.description}}</p>
+                    <p>${{this.price}}</p>
+                </li>
+            {{/each}}
+        {{else}}
+            <p>No hay productos</p>
+        {{/if}}
+    </ul>
+</div>

@@ -1,33 +1,41 @@
 <div>
     <h1>Plantilla para trabajar con socket</h1>
     <form id="form">
-        <label for="title">Titulo:</label>
-        <input type="text" name="title" id="title" required>
-        <br>
-        <label for="description">Descripción:</label>
-        <input type="text" name="description" id="description" required>
-        <br>
-        <label for="code">Código de producto:</label>
-        <input type="text" name="code" id="code" required>
-        <br>
-        <label for="price">Precio:</label>
-        <input type="number" name="price" id="price" required>
-        <br>
-        <label for="stock">Stock del producto:</label>
-        <input type="number" name="stock" id="stock" required>
-        <br>
-        <label for="category">Categoría:</label>
-        <input type="text" name="category" id="category">
-        <br>
+        <div>
+            <label for="title">Titulo:</label>
+            <input type="text" name="title" id="title" required maxlength="20">
+        </div>
+        <div>
+            <label for="description">Descripción:</label>
+            <input type="text" name="description" id="description" required maxlength="30" placeholder="Máximo 30 caracteres">
+        </div>
+        <div>
+            <label for="code">Código de producto:</label>
+            <input type="text" name="code" id="code" required>
+        </div>
+        <div>
+            <label for="price">Precio:</label>
+            <input type="number" name="price" id="price" required>
+        </div>
+        <div>
+            <label for="stock">Stock del producto:</label>
+            <input type="number" name="stock" id="stock" required>
+        </div>
+        <div>
+            <label for="category">Categoría:</label>
+            <input type="text" name="category" id="category">
+        </div>
         <button type="submit">Registrar producto</button>
     </form>
     <p>Productos con socket:</p>
-    <div>
+    <div class="cartsContainer">
         <ul id="productsContainer">
         {{#if products}}
                 {{#each products}}
                     <li id="product-{{this.id}}">
-                        {{this.title}} - ${{this.price}}
+                        <p><u>{{this.title}}</u></p>
+                        <p>Descripción: <br> {{this.description}}</p>
+                        <p>${{this.price}}</p>
                         <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
                     </li>
                 {{/each}}

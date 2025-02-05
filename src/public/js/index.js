@@ -1,5 +1,4 @@
 const socket = io();
-socket.emit('message', "¡Hola, me estoy comunicando desde un websocket!");
 
 const form = document.getElementById('form');
 
@@ -39,7 +38,9 @@ socket.on('loadProducts', products => {
         products.forEach(product => {
             productsContainer.innerHTML += `
                 <li id="product-${product.id}">
-                    ${product.title} - ${product.price}$ 
+                    <p><u>${product.title}</u></p>
+                    <p>Descripción: <br> ${product.description}</p>
+                    <p>$${product.price}</p>
                     <button onclick="deleteProduct('${product.id}')">Eliminar</button>
                 </li>`;
         });

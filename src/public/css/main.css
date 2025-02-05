@@ -1,12 +1,116 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-header{
-    background-color: grey;
-    padding: 10px;
-}
-
 body{
     margin: 0;
     font-family: "Roboto", serif;
     background-color: pink;
+}
+
+header{
+    background-color: rgba(0, 0, 0, 0.250);
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+header p{
+    margin: 0 35rem 0 0;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(244, 146, 163);
+}
+
+h1{
+    display: flex;
+    justify-content: start;
+    margin: 15px 10px;
+    font-weight: 400;
+}
+
+div form{
+    background-color: rgb(212, 123, 138);
+    padding: 30px;
+    height: 22rem;
+    width: 26rem;
+    border-radius: 5px;
+    margin: 0px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+div form div{
+    margin: 15px 0px;
+}
+
+div form div label{
+    margin-right: 10px;
+}
+
+div form div input{
+    border: none;
+    border-bottom: 1px pink solid;
+    background-color: rgb(212, 123, 138);
+}
+
+button{
+    color: pink;
+    background-color: rgb(206, 110, 126);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(146, 78, 90);
+}
+
+div p{
+    margin-left: 10px;
+    text-decoration: underline;
+}
+
+.cartsContainer{
+    margin: 5px 15px 25px 15px;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; /* Espacio entre columnas y filas */
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+li{
+    height: 10rem;
+    padding: 20px;
+    background-color: rgb(236, 168, 179);
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex; 
+    gap: 20px;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: center
+}
+
+li p{
+    text-decoration: none;
+    margin: 0;
+}
+
+footer{
+    background-color: rgba(0, 0, 0, 0.250);
+    padding: 35px;
+    margin: 0;
 }
