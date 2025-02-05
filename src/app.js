@@ -5,7 +5,6 @@ import __dirname from './utils.js';
 import handlebars from 'express-handlebars';
 import viewsRouter from './routes/views.router.js';
 import { Server } from 'socket.io';
-import {promises as fs} from 'fs';
 import ProductManager from './fileManager/productManager.js';
 
 const app = express();
@@ -52,14 +51,4 @@ socketServer.on('connection', (socket) => {
         const products = await productManager.getProducts();
         socketServer.emit('loadProducts', products);
     });
-
-    /*socket.on('newProduct', async product => {
-        const data = await fs.readFile(this.filePath, 'utf-8');
-        const productsFile = JSON.parse(data); 
-        const newProduct = {socketId : socket.id, ...product};
-        console.log('Producto creadooooo');
-        
-        products.push(newProduct);
-        socketServer.emit('loadProducts', newProduct);
-    });*/
 });

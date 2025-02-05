@@ -23,18 +23,18 @@
     </form>
     <p>Productos con socket:</p>
     <div>
+        <ul id="productsContainer">
         {{#if products}}
-            <ul id="productsContainer">
                 {{#each products}}
                     <li id="product-{{this.id}}">
                         {{this.title}} - ${{this.price}}
                         <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
                     </li>
                 {{/each}}
-            </ul>
         {{else}}
             <p>No hay productos</p>
         {{/if}}
+        </ul>
     </div>
 </div>
 <script src="/socket.io/socket.io.js"></script>

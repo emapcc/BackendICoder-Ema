@@ -35,13 +35,17 @@ socket.on('loadProducts', products => {
     console.log('Cargando productos');
     const productsContainer = document.getElementById('productsContainer');
     productsContainer.innerHTML = '';
-    products.forEach(product => {
-        productsContainer.innerHTML += `
-            <li id="product-${product.id}">
-                ${product.title} - ${product.price}$ 
-                <button onclick="deleteProduct('${product.id}')">Eliminar</button>
-            </li>`;
-    });
+    if(products.length>0){
+        products.forEach(product => {
+            productsContainer.innerHTML += `
+                <li id="product-${product.id}">
+                    ${product.title} - ${product.price}$ 
+                    <button onclick="deleteProduct('${product.id}')">Eliminar</button>
+                </li>`;
+        });
+    } else{
+        productsContainer.innerHTML += `<p>No hay productos</p>`
+    }
 });
 
 function deleteProduct(id) {

@@ -1,4 +1,10 @@
 <h1>Productos sin sockets:</h1>
-{{#each products}}
-    <p>{{this.title}}</p>
-{{/each}}
+<ul>
+    {{#if products}}
+        {{#each products}}
+            <li>{{this.title}} - ${{this.price}}</li>
+        {{/each}}
+    {{else}}
+        <p>No hay productos</p>
+    {{/if}}
+</ul>

@@ -1,11 +1,12 @@
-body{
-    background-color: pink;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 header{
-    background-color: grey
+    background-color: grey;
+    padding: 10px;
 }
 
-p{
-    color: red
+body{
+    margin: 0;
+    font-family: "Roboto", serif;
+    background-color: pink;
 }

@@ -20,6 +20,7 @@ viewsRouter.get('/products', async (req, res) => {
 
 viewsRouter.get('/realtimeproducts', async (req, res) => {
     const products = await getProducts();
+    
     res.render('realtimeproducts', {
         products,
         style: 'main.css'});
