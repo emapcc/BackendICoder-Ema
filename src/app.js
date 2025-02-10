@@ -6,10 +6,23 @@ import handlebars from 'express-handlebars';
 import viewsRouter from './routes/views.router.js';
 import { Server } from 'socket.io';
 import ProductManager from './fileManager/productManager.js';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 const app = express();
 const PORT = 8080;
 const httpServer = app.listen(PORT, () => console.log("Escuchando en el puerto ", PORT));
+
+dotenv.config();
+const URIMongoDB = process.env.URIMONGODBPRUEBA;
+console.log(URIMongoDB);
+
+mongoose.connect(URIMongoDB)
+    .then(() => console.log('Conexión a la base de datos exitosa.'))
+    .catch((error) => {
+        console.error('Error al conectarse a la base de datos: ', error);
+        process.exit();
+    })
 
 //Middleware 
 app.use(express.json());
