@@ -79,7 +79,7 @@ div p{
     margin: 5px 15px 25px 15px;
 }
 
-ul{
+.cartsContainer ul{
     margin: 0;
     padding: 0;
     list-style: none;
@@ -90,7 +90,7 @@ ul{
     flex-wrap: wrap;
 }
 
-li{
+.cartsContainer ul li{
     height: 10rem;
     padding: 20px;
     background-color: rgb(236, 168, 179);
@@ -104,9 +104,25 @@ li{
     justify-content: center
 }
 
-li p{
+.cartsContainer ul li p{
     text-decoration: none;
     margin: 0;
+}
+
+/* Estilos para vista de carrito */
+.cartContainer ul{
+    list-style: none;
+}
+
+.cartContainer ul li{
+    display: flex;
+    background-color: rgb(251, 212, 218);
+}
+
+.cartContainer ul li p{
+    text-decoration: none;
+    border-right: 1px black solid;
+    padding: 0px 30px;
 }
 
 footer{

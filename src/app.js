@@ -8,6 +8,7 @@ import { Server } from 'socket.io';
 import ProductManager from './fileManager/productManager.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import methodOverride from 'method-override';
 
 const app = express();
 const PORT = 8080;
@@ -34,6 +35,9 @@ app.use(express.static(__dirname + '/public'));
 app.engine('handlebars', handlebars.engine()); 
 app.set('views', __dirname + '/views'); 
 app.set('view engine', 'handlebars');
+
+//Para reescribir e interpretar el valor del campo _method de un formulario
+app.use(methodOverride('_method'));
 
 //PRODUCTOS 
 app.use('/api/products', productsRouter);
