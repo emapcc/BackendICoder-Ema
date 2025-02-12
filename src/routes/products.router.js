@@ -5,11 +5,6 @@ import product from '../models/product.model.js';
 const router = Router();
 const productManager = new ProductManager('products.json');
 
-//Todos los productos
-/* router.get('/', async (req, res) => {
-    const products = await productManager.getProducts();
-    res.json(products);
-}); */
 //Todos los productos usando paginación, filtros y ordenamiento
 router.get('/', async (req, res) => {
     const {limit = 10, page = 1, sort, query} = req.query;

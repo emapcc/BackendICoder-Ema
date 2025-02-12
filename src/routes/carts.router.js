@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import CartManager from '../fileManager/cartManager.js';
+import cart from '../models/cart.model.js'
 
 const router = Router();
 const cartManager = new CartManager('carts.json');
@@ -12,13 +13,29 @@ router.post('/', async (req, res) => {
 })
 
 //Obtener un carrito por su id
-router.get('/:cid', async (req, res) => {
+/* router.get('/:cid', async (req, res) => {
     const cart = await cartManager.getCartById(req.params.cid);
     if(!cart){
         console.error(`Carrito con id ${req.params.cid} no encontrado.`);
         return res.status(404).json({message: `Carrito con id ${req.params.cid} no encontrado.`});
     }
     res.json(cart.products);
+}) */
+//GET para traer el carrito con populate
+router.get('/:cid', async (req,res) => {
+    try {
+        const cartBuscado = await cart.findById({_id: req.params.cid});
+        if(!cartBuscado){
+            console.error(`Carrito con id ${req.params.cid} no encontrado.`);
+            return res.status(404).json({message: `Carrito con id ${req.params.cid} no encontrado.`});
+        }
+        if(cartBuscado.products.length === 0){
+            return res.json({message: `Carrito con id ${req.params.cid} vacio.`});
+        }
+        res.json(cartBuscado.products);
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: error.message });
+    }
 })
 
 //Agregar un producto al carrito

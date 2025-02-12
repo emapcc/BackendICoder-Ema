@@ -15,7 +15,6 @@ const httpServer = app.listen(PORT, () => console.log("Escuchando en el puerto "
 
 dotenv.config();
 const URIMongoDB = process.env.URIMONGODBPRUEBA;
-console.log(URIMongoDB);
 
 mongoose.connect(URIMongoDB)
     .then(() => console.log('Conexión a la base de datos exitosa.'))
