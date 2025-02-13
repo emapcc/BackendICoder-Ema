@@ -12,13 +12,25 @@ header{
     position: sticky;
     top: 0;
     z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 header p{
-    margin: 0 35rem 0 0;
     padding: 5px;
     border-radius: 5px;
     background-color: rgb(244, 146, 163);
+}
+
+header a{
+    color: black;
+    text-decoration: none;
+}
+
+header a:hover{
+    color: rgb(77, 77, 77);
 }
 
 h1{
@@ -28,7 +40,7 @@ h1{
     font-weight: 400;
 }
 
-div form{
+div .form-realtimeproducts{
     background-color: rgb(212, 123, 138);
     padding: 30px;
     height: 22rem;
@@ -43,21 +55,21 @@ div form{
     justify-content: center;
 }
 
-div form div{
+div .form-realtimeproducts div{
     margin: 15px 0px;
 }
 
-div form div label{
+div .form-realtimeproducts div label{
     margin-right: 10px;
 }
 
-div form div input{
+div .form-realtimeproducts div input{
     border: none;
     border-bottom: 1px pink solid;
     background-color: rgb(212, 123, 138);
 }
 
-button{
+.button-realtimeproducts{
     color: pink;
     background-color: rgb(206, 110, 126);
     border: none;
@@ -66,7 +78,7 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+.button-realtimeproducts:hover{
     background-color: rgb(146, 78, 90);
 }
 
@@ -123,6 +135,86 @@ div p{
     text-decoration: none;
     border-right: 1px black solid;
     padding: 0px 30px;
+}
+
+/* Estilos para la lista de productos */
+.cartsContainer ul .li-index{
+    height: 3rem;
+    width: 15rem;
+    gap: 10px;
+    padding: 1rem;
+    justify-content:start;
+}
+
+.cartsContainer ul .li-index a{
+    color: black;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.cartsContainer ul .li-index a:hover{
+    color: rgb(77, 77, 77);
+}
+
+.cartsContainer .paginationContainer p a{
+    color: black;
+    text-decoration: none;
+}
+
+.form-index{
+    background-color: rgb(236, 168, 179);
+    height: 0;
+    width: 0;
+}
+
+.button-index{
+    width: 10rem;
+    padding: 0;
+    margin-bottom: 10px;
+    color: pink;
+    background-color: rgb(206, 110, 126);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.button-index:hover{
+    background-color: rgb(146, 78, 90);
+}
+
+.div-product{
+    width: 25rem;
+    display: block;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8rem;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: rgb(236, 168, 179);
+    border-radius: 5px;
+}
+
+.div-product div h3{
+    margin-top: 0;
+}
+
+.div-product div p{
+    text-decoration: none;
+}
+
+.div-product div form button{
+    color: pink;
+    background-color: rgb(206, 110, 126);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.div-product div form button:hover{
+    background-color: rgb(146, 78, 90);
 }
 
 footer{

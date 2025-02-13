@@ -1,6 +1,6 @@
 <div>
     <h1>Plantilla para trabajar con socket</h1>
-    <form id="form">
+    <form id="form" class="form-realtimeproducts">
         <div>
             <label for="title">Titulo:</label>
             <input type="text" name="title" id="title" required maxlength="20">
@@ -25,7 +25,7 @@
             <label for="category">Categoría:</label>
             <input type="text" name="category" id="category">
         </div>
-        <button type="submit">Registrar producto</button>
+        <button class="button-realtimeproducts" type="submit">Registrar producto</button>
     </form>
     <p>Productos con socket:</p>
     <div class="cartsContainer">
@@ -36,7 +36,7 @@
                         <p><u>{{this.title}}</u></p>
                         <p>Descripción: <br> {{this.description}}</p>
                         <p>${{this.price}}</p>
-                        <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
+                        <button class="button-realtimeproducts" onclick="deleteProduct('{{this.id}}')">Eliminar</button>
                     </li>
                 {{/each}}
         {{else}}

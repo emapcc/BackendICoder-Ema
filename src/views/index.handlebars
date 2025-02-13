@@ -3,14 +3,25 @@
     <ul>
         {{#if products}}
             {{#each products}}
-                <li>
-                    <p><u>{{this.title}}</u></p>
-                    <p>Descripción: <br> {{this.description}}</p>
-                    <p>${{this.price}}</p>
+                <li class="li-index">
+                    <p><u>{{this.title}}</u> <a href="http://localhost:8080/product/{{this._id}}">(Ver detalle)</a></p>
+                    
+                    <form class="form-index" action="/api/carts/67ac102955008ad7f730ab18/products/{{this._id}}" method="post">
+                        <button class="button-index" type="submit">Agregar al carrito</button>
+                    </form>
                 </li>
             {{/each}}
         {{else}}
             <p>No hay productos</p>
         {{/if}}
     </ul>
+    <div class="paginationContainer" style="display: flex;">
+        {{#if prevPage}}
+            <p><a href="http://localhost:8080/products/?query={{query}}&limit={{limit}}&page={{numberPrev}}"><-</a></p>
+        {{/if}}
+        <p style="text-decoration: none;">Página: {{page}}</p>
+        {{#if nextPage}}
+            <p><a href="http://localhost:8080/products/?query={{query}}&limit={{limit}}&page={{numberSig}}">-></a></p>
+        {{/if}}
+    </div>
 </div>
