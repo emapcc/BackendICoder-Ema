@@ -87,4 +87,10 @@ viewsRouter.get('/carts/:cid', async (req, res) => {
     }
 })
 
+viewsRouter.get('/newProduct', async (req, res) => {
+    res.render('newProduct', {
+        style: 'main.css'
+    })
+})
+
 export default viewsRouter;

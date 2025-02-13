@@ -1,0 +1,30 @@
+<h1>Crear un producto</h1>
+<div>
+    <form class="form-realtimeproducts" action="/api/products" method="post">
+        <div>
+            <label for="title">Titulo:</label>
+            <input type="text" name="title" id="title" required maxlength="20">
+        </div>
+        <div>
+            <label for="description">Descripción:</label>
+            <input type="text" name="description" id="description" required maxlength="30" placeholder="Máximo 30 caracteres">
+        </div>
+        <div>
+            <label for="code">Código de producto:</label>
+            <input type="text" name="code" id="code" required>
+        </div>
+        <div>
+            <label for="price">Precio:</label>
+            <input type="number" name="price" id="price" required>
+        </div>
+        <div>
+            <label for="stock">Stock del producto:</label>
+            <input type="number" name="stock" id="stock" required>
+        </div>
+        <div>
+            <label for="category">Categoría:</label>
+            <input type="text" name="category" id="category">
+        </div>
+        <button class="button-realtimeproducts" type="submit">Registrar producto</button>
+    </form>
+</div>

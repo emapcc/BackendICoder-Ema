@@ -137,6 +137,34 @@ div p{
     padding: 0px 30px;
 }
 
+.cartContainer ul li form button{
+    color: pink;
+    background-color: rgb(206, 110, 126);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 10px 0 0 15px;
+}
+
+.cartContainer ul li form button:hover{
+    background-color: rgb(146, 78, 90);
+}
+
+.cartContainer div form button{
+    color: pink;
+    background-color: rgb(206, 110, 126);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 10px 0 0 15px;
+}
+
+.cartContainer div form button:hover{
+    background-color: rgb(146, 78, 90);
+}
+
 /* Estilos para la lista de productos */
 .cartsContainer ul .li-index{
     height: 3rem;
@@ -220,5 +248,5 @@ div p{
 footer{
     background-color: rgba(0, 0, 0, 0.250);
     padding: 35px;
-    margin: 0;
+    margin: 15px 0 0 0;
 }
