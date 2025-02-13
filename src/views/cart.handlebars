@@ -7,7 +7,7 @@
                     <p>{{product.title}}</p>
                     <p>Cantidad: {{quantity}}</p>
                     <p>${{product.price}}</p>
-                    <form action="/api/carts/67ac102955008ad7f730ab18/products/{{product._id}}?_method=DELETE" method="post">
+                    <form action="/api/carts/67ad50eb5e1f581a8646a0b7/products/{{product._id}}?_method=DELETE" method="post">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit">Eliminar</button>
                     </form>
@@ -18,7 +18,7 @@
         {{/if}}
     </ul>
     <div>
-        <form action="/api/carts/67ac102955008ad7f730ab18?_method=DELETE" method="post">
+        <form action="/api/carts/67ad50eb5e1f581a8646a0b7?_method=DELETE" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <button type="submit">Vaciar carrito</button>
         </form>

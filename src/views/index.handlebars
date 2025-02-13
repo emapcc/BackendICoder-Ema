@@ -1,4 +1,4 @@
-<h1>Productos sin sockets:</h1>
+<h1>Productos:</h1>
 <div class="cartsContainer">
     <ul>
         {{#if products}}
@@ -6,7 +6,7 @@
                 <li class="li-index">
                     <p><u>{{this.title}}</u> <a href="http://localhost:8080/product/{{this._id}}">(Ver detalle)</a></p>
                     
-                    <form class="form-index" action="/api/carts/67ac102955008ad7f730ab18/products/{{this._id}}" method="post">
+                    <form class="form-index" action="/api/carts/67ad50eb5e1f581a8646a0b7/products/{{this._id}}" method="post">
                         <button class="button-index" type="submit">Agregar al carrito</button>
                     </form>
                 </li>

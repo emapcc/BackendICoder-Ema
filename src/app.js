@@ -15,7 +15,7 @@ const PORT = 8080;
 const httpServer = app.listen(PORT, () => console.log("Escuchando en el puerto ", PORT));
 
 dotenv.config();
-const URIMongoDB = process.env.URIMONGODBPRUEBA;
+const URIMongoDB = process.env.URIMONGODB;
 
 mongoose.connect(URIMongoDB)
     .then(() => console.log('Conexión a la base de datos exitosa.'))
