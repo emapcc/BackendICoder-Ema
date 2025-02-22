@@ -6,7 +6,6 @@ import productModel from '../models/product.model.js';
 const router = Router();
 const cartManager = new CartManager('carts.json');
 
-//Crear carrito
 router.post('/', async (req, res) => {
     try {
         const newCart = await cartModel.create({});
@@ -16,7 +15,6 @@ router.post('/', async (req, res) => {
     }
 })
 
-//Obtener un carrito por su id con populate
 router.get('/:cid', async (req,res) => {
     try {
         const cartBuscado = await cartModel.findById({_id: req.params.cid});
@@ -33,7 +31,6 @@ router.get('/:cid', async (req,res) => {
     }
 })
 
-//Agregar un producto al carrito
 router.post('/:cid/products/:pid', async (req, res) => {
     const cid = req.params.cid;
     const pid = req.params.pid;
@@ -56,7 +53,6 @@ router.post('/:cid/products/:pid', async (req, res) => {
     }
 })
 
-//Eliminar del carrito el producto seleccionado
 router.delete('/:cid/products/:pid', async (req,res) => {
     const cid = req.params.cid;
     const pid = req.params.pid;
@@ -72,7 +68,6 @@ router.delete('/:cid/products/:pid', async (req,res) => {
     }
 })
 
-//Actualizar todos los productos del carrito con un arreglo de productos.
 router.put('/:cid', async (req,res) => {
     const cid = req.params.cid;
     const products = req.body;
@@ -87,7 +82,6 @@ router.put('/:cid', async (req,res) => {
     }
 })
 
-//Actualizar SÓLO la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
 router.put('/:cid/products/:pid', async (req,res) => {
     const cid = req.params.cid;
     const pid = req.params.pid;
@@ -109,7 +103,6 @@ router.put('/:cid/products/:pid', async (req,res) => {
     }
 })
 
-//Eliminar todos los productos del carrito 
 router.delete('/:cid', async (req, res) => {
     const cid = req.params.cid;
     try {

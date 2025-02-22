@@ -40,9 +40,8 @@ class ProductManager{
                     id: id,
                     ...product,
                 };
-                // Actualizar el contador en la posición 0 y agregar el nuevo producto
                 productsFile[0] = id;
-                productsFile.push(newProduct); // Agrega el producto al array estático
+                productsFile.push(newProduct);
                 await fs.writeFile(this.filePath, JSON.stringify(productsFile, null, 2));
                 console.log('Producto creado exitosamente.');
                 return newProduct;
@@ -59,7 +58,6 @@ class ProductManager{
     }
 
     async updateProduct(id, actualizaciones){
-        //Agregar try catch?
         const products = await this.getProducts();
         const index = products.findIndex(p => p.id === Number(id));
         if (index === -1) {
@@ -70,14 +68,12 @@ class ProductManager{
         products[index] = {
             ...products[index],
             ...actualizaciones,
-            "id": Number(id), //El id no cambia
+            "id": Number(id),
         };
 
-        //Leer el archivo original por el contador
         const data = await fs.readFile(this.filePath, 'utf-8');
         const productsFile = JSON.parse(data);
 
-        //Actualiza los productos nuevos en el array orig 
         productsFile.splice(1, products.length, ...products);
         await fs.writeFile(this.filePath, JSON.stringify(productsFile, null, 2));
         console.log(`Producto actualizado`);
@@ -87,16 +83,16 @@ class ProductManager{
     async deleteProduct(id){
         const products = await this.getProducts();
         const updatedProducts = products.filter(p => p.id !== Number(id));
-        //Retorna false si no elimino nada (no encontro el id)
+        
         if (products.length === updatedProducts.length){
             console.log(`Producto con id ${id} no encontrado.`);
             return false;
         } 
-        //Leer el archivo original por el contador
+        
         const data = await fs.readFile(this.filePath, 'utf-8');
         const productsFile = JSON.parse(data);
 
-        //Actualizar los productos en el archivo sin el eliminado
+        
         productsFile.splice(1, products.length, ...updatedProducts);
         await fs.writeFile(this.filePath, JSON.stringify(productsFile, null, 2));
         console.log('Producto eliminado.');

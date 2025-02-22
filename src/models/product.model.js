@@ -4,7 +4,6 @@ import mongoosePaginate from 'mongoose-paginate-v2';
 const {Schema} = mongoose;
 const productCollection = 'products';
 
-//Definición de esquema del producto
 const productSchema = new Schema({
     title: {type: String, required: true},
     description: {type: String, required: true},
@@ -16,7 +15,6 @@ const productSchema = new Schema({
     thumbnails: { type: [String], default: ["Sin imagen"] }
 });
 
-//Agregar plugin de paginación
 productSchema.plugin(mongoosePaginate);
 
 const productModel = mongoose.model(productCollection, productSchema);

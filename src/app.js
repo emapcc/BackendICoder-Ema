@@ -24,31 +24,23 @@ mongoose.connect(URIMongoDB)
         process.exit();
     })
 
-//Middleware 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-//Configuracion archiovos estaticos
 app.use(express.static(__dirname + '/public'));
 
-//Configuracion de plantillas handlebars
 app.engine('handlebars', handlebars.engine()); 
 app.set('views', __dirname + '/views'); 
 app.set('view engine', 'handlebars');
 
-//Para reescribir e interpretar el valor del campo _method de un formulario
 app.use(methodOverride('_method'));
 
-//PRODUCTOS 
 app.use('/api/products', productsRouter);
 
-//CARRITO
 app.use('/api/carts', cartsRouter);
 
-//VISTAS
 app.use('/', viewsRouter);
 
-//Sockets
 const socketServer = new Server(httpServer); 
 
 const productManager = new ProductManager('products.json');
