@@ -12,25 +12,24 @@ router.get('/', async (req, res) => {
     if (query) {
         filter = {category: query};
     }
+    const options = {
+        page: parseInt(page),
+        limit: parseInt(limit),
+        sort: sort ? { price: sort === 'asc' ? 1 : -1 } : {}
+    };
     try {
-        const totalProducts = await productModel.countDocuments(filter);
-        const products = await productModel.find(filter)
-            .sort(sort ? { price: sort === 'asc' ? 1 : -1 } : {})
-            .skip((page - 1) * limit)
-            .limit(parseInt(limit));
-
-        const totalPages = Math.ceil(totalProducts / limit);
+        const products = await productModel.paginate(filter, options);
         res.json({
             status: 'success',
-            payload: products,
-            totalPages,
-            prevPage: page > 1 ? page - 1 : null,
-            nextPage: page < totalPages ? parseInt(page) + 1 : null,
-            page: parseInt(page),
-            hasPrevPage: page > 1,
-            hasNextPage: page < totalPages,
-            prevLink: page > 1 ? `/api/products?page=${page - 1}&limit=${limit}&query=${query}` : null,
-            nextLink: page < totalPages ? `/api/products?page=${parseInt(page) + 1}&limit=${limit}&query=${query}` : null
+            payload: products.docs,
+            totalPages: products.totalPages,
+            prevPage: products.prevPage,
+            nextPage: products.nextPage,
+            page: products.page,
+            hasPrevPage: products.hasPrevPage,
+            hasNextPage: products.hasNextPage,
+            prevLink: products.hasPrevPage ? `/api/products?page=${products.prevPage}&limit=${limit}&query=${query}` : null,
+            nextLink: products.hasNextPage ? `/api/products?page=${products.nextPage}&limit=${limit}&query=${query}` : null
         });
     }catch(error) {
         res.status(500).json({ status: 'error', message: error.message });

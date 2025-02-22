@@ -14,36 +14,30 @@ const getProducts = async () => {
 
 viewsRouter.get('/products', async (req, res) => {
     let {limit = 10, page = 1, sort, query} = req.query;
-    page = Number(page);
+    page = parseInt(page);
+    limit = parseInt(limit);
     let filter = {};
     if(query){
         filter = {category: query};
     }
+    const options = {
+        page,
+        limit,
+        sort: sort ? { price: sort === 'asc' ? 1 : -1 } : {}
+    };
     try {
-        const totalProducts = await productModel.countDocuments(filter);
-        const products = await productModel.find(filter).lean()
-            .sort(sort ? { price: sort === 'asc' ? 1 : -1 } : {})
-            .skip((page - 1) * limit)
-            .limit(parseInt(limit));
-        const totalPages = Math.ceil(totalProducts / limit);
-        const prevPage = page !== 1;
-        const nextPage = totalPages > page;
-        let numberPrev = undefined;
-        let numberSig = undefined;
-        if(1 < page)
-            numberPrev = page - 1;
-        if(page < totalPages)
-            numberSig = page + 1;
-
+        const products = await productModel.paginate(filter, options);
+        const productsDocs = products.docs.map(doc => doc.toObject());
+        
         res.render('index', {
-            products,
-            page,
+            products: productsDocs,
+            page: products.page,
             query,
             limit,
-            nextPage,
-            prevPage,
-            numberPrev,
-            numberSig,
+            nextPage: products.hasNextPage,
+            prevPage: products.hasPrevPage,
+            numberPrev: products.hasPrevPage ? products.prevPage : undefined,
+            numberSig: products.hasNextPage ? products.nextPage : undefined,
             style: 'main.css'
         });
     } catch (error) {
